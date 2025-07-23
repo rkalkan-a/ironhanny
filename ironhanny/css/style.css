@@ -1,0 +1,391 @@
+/* css/style.css */
+
+/* 1) ManufacturingConsent (original font for all headers/titles) */
+@font-face {
+  font-family: 'ManufacturingConsent';
+  src: url('../ManufacturingConsent-Regular.ttf') format('truetype');
+}
+/* 2) SectionHeader (for button text only) */
+@font-face {
+  font-family: 'SectionHeader';
+  src: url('../Anton-Regular.ttf') format('truetype');
+}
+
+:root {
+  --background:   #000;
+  --surface:      #1a1a1a;
+  --accent:       #444;
+  --text:         #ccc;
+  --text-strong:  #fff;
+  --hover-bg:     #e63946;
+}
+
+html { font-size:18px; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Inter',sans-serif;
+  background:var(--background);
+  color:var(--text);
+  line-height:1.6;
+}
+
+/* css/style.css */
+
+/* …existing font‐face, :root, body, hero, testimonials, about, contact CSS above… */
+
+/* NAVIGATION */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0.75rem 2rem;
+  background: var(--surface);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;  /* center the nav‑links */
+  align-items: center;
+}
+
+/* Pull the logo out of the flex flow so it stays at left */
+.logo {
+  position: absolute;
+  left: 2rem;               /* adjust as needed */
+  font-family: 'ManufacturingConsent', sans-serif;
+  font-size: 2.75rem;
+  color: var(--text-strong);
+  text-decoration: none;
+}
+
+/* Regular flow for links—flex‑centered by the nav container */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+.nav-links a {
+  font-family: 'ManufacturingConsent', sans-serif;
+  font-size: 1.75rem;
+  padding: 0.5rem 1rem;
+  color: var(--text-strong);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--hover-bg);
+  border-radius: 50px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* GLOBAL .btn (hero/apply) */
+.btn {
+  font-family: 'SectionHeader', sans-serif;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+.btn::after {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--hover-bg);
+  border-radius: 50px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+.btn:hover::after {
+  transform: scaleX(1);
+}
+
+/* FOOTER */
+.footer {
+  background: var(--surface);
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 4rem;
+}
+.footer .social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.social-btn {
+  font-family: 'ManufacturingConsent', sans-serif;
+  font-size: 1.25rem;
+  color: var(--text-strong);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.social-btn:hover {
+  color: var(--hover-bg);
+}
+
+/* Ensure hero image fades in as before */
+.hero-images {
+  opacity: 0; /* gsap will animate to 1 */
+}
+/* rest of your animations and sections… */
+
+
+/* GLOBAL .btn (hero, apply, submit) */
+.btn {
+  font-family:'SectionHeader',sans-serif;
+  text-decoration:none; position:relative;
+  overflow:hidden; display:inline-block;
+  transition:color 0.3s ease;
+}
+.btn::after {
+  content:''; position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  background:var(--hover-bg); border-radius:50px;
+  transform:scaleX(0); transform-origin:left center;
+  transition:transform 0.3s ease; z-index:-1;
+}
+.btn:hover::after {
+  transform:scaleX(1);
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-images {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;    /* ← ensure image sits on the left */
+  opacity: 0;                     /* GSAP will fade this in */
+}
+
+.hero-images img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-images .left-img {
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+}
+
+/* HEADLINE & BUTTON */
+.headline {
+  font-family: 'ManufacturingConsent', sans-serif;
+  font-size: 4rem;
+  opacity: 0.3;
+  transform: scale(0.8);
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--text-strong);
+  font-family: 'SectionHeader', sans-serif;
+  font-size: 1.5rem;
+  padding: 1rem 4rem;        /* ← increased horizontal padding */
+  border-radius: 2rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+/* hover‑fill effect */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--hover-bg);
+  border-radius: 2rem;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+.btn:hover::after {
+  transform: scaleX(1);
+}
+
+.hero .btn {
+  margin-top: 4rem;        /* more space below "Enter the shadow" */
+  padding: 0.75rem 1.5rem; /* slimmer pill width */
+  font-size: 1.25rem;      /* adjust text size if needed */
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  padding: 5rem 2rem;
+  background: var(--surface);
+  text-align: center;
+  margin-top: 0;   /* was 100vh before */
+}
+
+.testimonials h2 {
+  font-family:'ManufacturingConsent',sans-serif;
+  font-size:2.5rem; color:var(--text-strong);
+  margin-bottom:2rem;
+}
+.testimonials-grid {
+  display:flex; gap:1.5rem; justify-content:center;
+}
+.testimonial-card {
+  background:var(--background); padding:1.5rem;
+  border-radius:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.7);
+  max-width:300px; text-align:center;
+}
+.testimonial-card p {
+  font-size:1rem; font-style:italic;
+  color:var(--text-strong); margin-bottom:1rem;
+}
+.testimonial-card span {
+  font-size:0.95rem; color:var(--accent);
+}
+
+/* ABOUT SECTION */
+.about-section {
+  display:flex; align-items:center; gap:3rem;
+  padding:5rem 2rem; max-width:1200px; margin:0 auto;
+}
+.about-section:nth-of-type(even) {
+  flex-direction:row-reverse;
+}
+.about-content {
+  flex:1; max-width:500px;
+}
+.about-content h1 {
+  font-family:'ManufacturingConsent',sans-serif;
+  font-size:3rem; color:var(--text-strong);
+  margin-bottom:1rem;
+}
+.about-content p {
+  font-size:1.125rem; line-height:1.5;
+}
+.about-image {
+  flex:1; max-width:600px; overflow:hidden;
+}
+.about-image img {
+  width:100%; height:auto; display:block;
+  mask-image: radial-gradient(circle at center, black 80%, transparent 100%);
+}
+
+/* APPLY SECTION (about page) */
+.apply-section {
+  text-align:center; padding:3rem 2rem;
+}
+.apply-section .btn {
+  font-size:2rem; padding:1rem 2.5rem;
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  padding:5rem 2rem; max-width:600px; margin:0 auto;
+}
+.contact-section h1 {
+  font-family:'ManufacturingConsent',sans-serif;
+  font-size:2.5rem; color:var(--text-strong);
+  text-align:center; margin-bottom:2rem;
+}
+.contact-form .form-group {
+  margin-bottom:1.5rem;
+}
+.contact-form label {
+  display:block; margin-bottom:0.5rem;
+  color:var(--text-strong);
+}
+.contact-form input,
+.contact-form textarea {
+  width:100%; padding:0.75rem; border:none;
+  border-radius:0.5rem; background:var(--surface);
+  color:var(--text); font-size:1rem;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline:2px solid var(--hover-bg);
+}
+.contact-form button.btn {
+  font-size:1.5rem; padding:0.75rem 2rem; margin-top:1rem;
+}
+
+/* FOOTER */
+.footer {
+  background:var(--surface); padding:2rem 0;
+  text-align:center; margin-top:4rem;
+}
+.footer .social-buttons {
+  display:flex; justify-content:center; gap:2rem;
+}
+.social-btn {
+  font-family:'ManufacturingConsent',sans-serif;
+  font-size:1.25rem; color:var(--text-strong);
+  text-decoration:none; transition:color 0.3s ease;
+}
+.social-btn:hover {
+  color:var(--hover-bg);
+}
+
+/* Make the contact “Submit” button behave like the other .btn pills */
+button.btn {
+  background: var(--accent);
+  color: var(--text-strong);
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem 2.5rem;
+  font-family: 'SectionHeader', sans-serif;
+  font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  z-index: 0;            /* sit above negative pseudo-elements */
+
+}
+
+button.btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--hover-bg);
+  border-radius: 2rem;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+button.btn:hover::after {
+  transform: scaleX(1);
+}
+
+button.btn:hover {
+  color: var(--text-strong);
+}
