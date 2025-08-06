@@ -389,3 +389,158 @@ button.btn:hover::after {
 button.btn:hover {
   color: var(--text-strong);
 }
+
+/* ==== Responsive Navbar ==== */
+@media (max-width: 600px) {
+  /* hide logo to save space */
+  .nav .logo {
+    display: none;
+  }
+
+  /* stack links and center them */
+  .nav .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem 0;
+    gap: 0.75rem;
+    background: var(--surface);
+  }
+
+  /* reduce link font-size & give padding for easier tapping */
+  .nav .nav-links a {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* ==== Make every .btn hover exactly like the contact “Submit” ==== */
+.btn,
+button.btn {
+  /* ensure pseudo-element (::after) sits behind text */
+  position: relative;
+  z-index: 0;
+}
+
+.btn::after,
+button.btn::after {
+  /* keep the red highlight behind the text */
+  z-index: -1;
+}
+
+.btn:hover,
+button.btn:hover {
+  /* on hover, text stays white (or your --text-strong) */
+  color: var(--text-strong);
+}
+
+
+/* ==== TESTIMONIALS CAROUSEL: force horizontal flex ==== */
+.testimonials-track {
+  display: flex !important;       /* make it a flex container */
+  flex-direction: row !important; /* ensure row layout */
+  flex-wrap: nowrap !important;   /* no wrapping down to a new line */
+  transition: transform 0.6s ease;
+}
+
+.testimonial-card {
+  flex: 0 0 100%;           /* one full-width card per “page” */
+  box-sizing: border-box;
+  padding: 1.5rem;
+}
+
+/* widen to 2-across at tablet, 3-across at desktop */
+@media (min-width: 600px) {
+  .testimonial-card { flex: 0 0 50%; }
+}
+@media (min-width: 900px) {
+  .testimonial-card { flex: 0 0 33.333%; }
+}
+
+/* ==== TESTIMONIALS: spacing & fancier arrows ==== */
+.testimonials-track {
+  gap: 2rem;                 /* spacing between each card */
+}
+
+.testimonial-btn {
+  /* push arrows fully to the left/right edges */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--text-strong);
+  border: none;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+.testimonial-btn.prev {
+  left: 0.5rem;
+}
+.testimonial-btn.next {
+  right: 0.5rem;
+}
+.testimonial-btn:hover {
+  background: var(--hover-bg);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* ==== Center & Pad Testimonials ==== */
+.testimonials-container {
+  /* push the cards in from the arrows */
+  padding: 0 4rem;
+}
+
+.testimonials-track {
+  /* keep them in one row, center that row within the padded container */
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center;      /* center the whole lineup */
+  gap: 2rem;                     /* breathing room between cards */
+}
+
+/* nudge arrows in so they sit outside the padded area */
+.testimonial-btn.prev {
+  left: 1rem;  /* sits 1rem from the very left of the section */
+}
+.testimonial-btn.next {
+  right: 1rem; /* sits 1rem from the very right of the section */
+}
+
+/* ==== ARROW POSITIONING FIX ==== */
+/* 1) Make the section the positioning context */
+section.testimonials {
+  position: relative;
+}
+
+/* 2) Keep your inner container padded as before */
+section.testimonials .testimonials-container {
+  padding: 0 4rem;  /* keeps testimonials off the arrows */
+}
+
+/* 3) Force buttons to be absolutely positioned relative to the section */
+section.testimonials .testimonial-btn {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+/* 4) Pin prev to the left edge, next to the right edge */
+section.testimonials .testimonial-btn.prev {
+  left: 2rem;
+  right: auto;
+}
+section.testimonials .testimonial-btn.next {
+  right: 2rem;
+  left: auto;
+}
+
