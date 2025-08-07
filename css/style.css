@@ -495,18 +495,35 @@ button.btn:hover {
 
 /* ==== Center & Pad Testimonials ==== */
 .testimonials-container {
-  /* push the cards in from the arrows */
+  position: relative;
+  overflow: hidden;
   padding: 0 4rem;
 }
 
 .testimonials-track {
-  /* keep them in one row, center that row within the padded container */
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  justify-content: center;      /* center the whole lineup */
-  gap: 2rem;                     /* breathing room between cards */
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
 }
+
+.testimonials-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.testimonial-card {
+  flex: 0 0 80%;
+  margin-right: 2rem;
+  scroll-snap-align: start;
+}
+
+/* Optional: snap scroll */
+.testimonials-track {
+  scroll-snap-type: x mandatory;
+}
+
 
 /* nudge arrows in so they sit outside the padded area */
 .testimonial-btn.prev {

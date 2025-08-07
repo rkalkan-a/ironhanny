@@ -16,4 +16,27 @@ window.addEventListener('load', () => {
 
   // Show the Apply Now button
   gsap.from('.hero .btn', { opacity: 0, y: 20, duration: 0.5, delay: 3.5 });
+
+  // === Testimonial Scroll Buttons ===
+  const track = document.querySelector('.testimonials-track');
+  const prevBtn = document.querySelector('.testimonial-btn.prev');
+  const nextBtn = document.querySelector('.testimonial-btn.next');
+
+  if (track && prevBtn && nextBtn) {
+    const scrollAmount = 350;
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    });
+  }
 });
