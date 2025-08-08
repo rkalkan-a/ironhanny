@@ -8,21 +8,26 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-
-    <nav class="nav">
-        <a href="index.html" class="logo">Iron Hanny</a>
-        <ul class="nav-links">
-          <li><a href="#testimonials" class="active">Testimonials</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <nav class="nav">
+    <!-- Logo always on left -->
+    <a href="index.html" class="logo">Iron Hanny</a>
+  
+    <!-- Hamburger only on mobile -->
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+  
+    <!-- Links: flex on desktop, hidden on mobile until open -->
+    <ul class="nav-links">
+      <li><a href="#testimonials" class="active">Testimonials</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- HERO -->
   <header class="hero">
     <div class="hero-images">
       <img
-        src="assets/hannyfulldownlighting.jpg"
+        src="assets/hannyabs.jpg"
         alt="Hanny in downlighting pose"
         class="left-img"
       />

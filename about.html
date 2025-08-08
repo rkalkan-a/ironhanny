@@ -9,14 +9,20 @@
 </head>
 <body>
 
-    <nav class="nav">
-        <a href="index.html" class="logo">Iron Hanny</a>
-        <ul class="nav-links">
-          <li><a href="index.html#testimonials">Testimonials</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <nav class="nav">
+    <!-- Logo always on left -->
+    <a href="index.html" class="logo">Iron Hanny</a>
+  
+    <!-- Hamburger only on mobile -->
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+  
+    <!-- Links: flex on desktop, hidden on mobile until open -->
+    <ul class="nav-links">
+      <li><a href="#testimonials" class="active">Testimonials</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
       
 
   <main>
@@ -37,14 +43,14 @@
         </p>
       </div>
       <div class="about-image">
-        <img src="assets/hannyfrontpose.jpg" alt="Hanny front pose"/>
+        <img src="assets/lighterabs.jpg" alt="Hanny abs pose"/>
       </div>
     </section>
 
     <!-- SECTION 2: image left, text right -->
     <section class="about-section">
       <div class="about-image">
-        <img src="assets/hannyfullpose.jpg" alt="Hanny full pose"/>
+        <img src="assets/hannybackpose.jpg" alt="Hanny back pose"/>
       </div>
       <div class="about-content">
         <h1>Our Philosophy</h1>

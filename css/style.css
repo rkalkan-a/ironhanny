@@ -1,5 +1,62 @@
 /* css/style.css */
 
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-strong);
+  cursor: pointer;
+}
+
+/* MOBILE NAV: below existing styles, at end of file */
+@media (max-width: 768px) {
+  /* Show hamburger */
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+  }
+
+  /* Logo stays left */
+  .nav .logo {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+  }
+
+  /* Hide links initially */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--surface);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    gap: 2rem;
+  }
+
+  /* Show when open */
+  .nav.nav-open .nav-links {
+    display: flex;
+  }
+
+  /* Make each link large for easy tap */
+  .nav-links a {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
 /* 1) ManufacturingConsent (original font for all headers/titles) */
 @font-face {
   font-family: 'ManufacturingConsent';
@@ -186,7 +243,7 @@ body {
 
 .hero-images img {
   width: 50%;
-  height: 100%;
+  height: 150%;
   object-fit: cover;
 }
 
@@ -561,3 +618,53 @@ section.testimonials .testimonial-btn.next {
   left: auto;
 }
 
+@media (max-width: 768px) {
+  /* Keep nav background bar visible */
+  .nav {
+    background: var(--surface);
+  }
+  /* Logo on left */
+  .nav .logo {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: auto;
+  }
+  /* Show toggle button on right */
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-strong);
+    z-index: 1001;
+    cursor: pointer;
+  }
+  /* Hide links by default, full-screen overlay when open */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--surface);
+    z-index: 1000;
+  }
+  /* Show when toggled */
+  .nav.nav-open .nav-links {
+    display: flex;
+  }
+  .nav-links li {
+    margin: 1.5rem 0;
+  }
+  .nav-links a {
+    font-size: 2rem;
+  }
+}

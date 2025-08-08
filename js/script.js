@@ -40,3 +40,12 @@ window.addEventListener('load', () => {
     });
   }
 });
+
+/* JS - in js/script.js, after GSAP code: */
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.nav');
+  const toggle = document.querySelector('.nav-toggle');
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('nav-open');
+  });
+});
