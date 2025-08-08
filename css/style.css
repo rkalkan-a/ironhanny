@@ -1,6 +1,8 @@
-/* css/style.css */
-
-
+/* CSS: css/style.css */
+/* Ensure desktop shows links, toggle hidden */
+.nav-links {
+  display: flex;
+}
 .nav-toggle {
   display: none;
   background: none;
@@ -10,7 +12,7 @@
   cursor: pointer;
 }
 
-/* MOBILE NAV: below existing styles, at end of file */
+/* MOBILE ONLY */
 @media (max-width: 768px) {
   /* Show hamburger */
   .nav-toggle {
@@ -20,7 +22,6 @@
     right: 1rem;
     z-index: 1001;
   }
-
   /* Logo stays left */
   .nav .logo {
     position: absolute;
@@ -28,10 +29,9 @@
     left: 1rem;
     font-size: 2rem;
   }
-
-  /* Hide links initially */
+  /* Hide links by default */
   .nav-links {
-    display: none;
+    display: none !important;
     position: fixed;
     top: 0;
     left: 0;
@@ -44,19 +44,15 @@
     z-index: 1000;
     gap: 2rem;
   }
-
-  /* Show when open */
+  /* Show overlay when nav-open on nav */
   .nav.nav-open .nav-links {
-    display: flex;
+    display: flex !important;
   }
-
-  /* Make each link large for easy tap */
   .nav-links a {
     font-size: 2rem;
     padding: 0.5rem 1rem;
   }
 }
-
 /* 1) ManufacturingConsent (original font for all headers/titles) */
 @font-face {
   font-family: 'ManufacturingConsent';
