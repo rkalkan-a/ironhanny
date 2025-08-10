@@ -34,7 +34,7 @@ body {
 main, header, section, .about-section, .contact-section { scroll-margin-top: 90px; }
 
 /* =========================
-   NAVIGATION (desktop + mobile)
+   NAVIGATION (desktop default)
    ========================= */
 .nav {
   position: fixed;
@@ -45,7 +45,7 @@ main, header, section, .about-section, .contact-section { scroll-margin-top: 90p
   box-shadow: 0 2px 5px rgba(0,0,0,0.7);
   display: flex;
   align-items: center;
-  justify-content: center; /* center the UL */
+  justify-content: center; /* center the UL on desktop */
   z-index: 1000;
 }
 
@@ -88,30 +88,8 @@ main, header, section, .about-section, .contact-section { scroll-margin-top: 90p
 }
 .nav-links a:hover::after { transform: scaleX(1); }
 
-/* =========================
-   GLOBAL .btn (hero/apply/submit)
-   ========================= */
-.btn {
-  font-family: 'SectionHeader', sans-serif;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  transition: color 0.3s ease;
-}
-.btn::after {
-  content: '';
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: var(--hover-bg);
-  border-radius: 2rem;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.3s ease;
-  z-index: -1;
-}
-.btn:hover::after { transform: scaleX(1); }
-.btn:hover { color: var(--text-strong); }
+/* Hide any hamburger button element if present */
+.nav-toggle { display: none !important; }
 
 /* =========================
    HERO SECTION
@@ -158,6 +136,31 @@ main, header, section, .about-section, .contact-section { scroll-margin-top: 90p
   color: var(--text-strong);
   border-radius: 2rem;
 }
+
+/* =========================
+   GLOBAL .btn (hero/apply/submit)
+   ========================= */
+.btn {
+  font-family: 'SectionHeader', sans-serif;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+.btn::after {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--hover-bg);
+  border-radius: 2rem;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+.btn:hover::after { transform: scaleX(1); }
+.btn:hover { color: var(--text-strong); }
 
 /* =========================
    TESTIMONIALS — single row horizontal scroll
@@ -346,111 +349,82 @@ button.btn::after {
 button.btn:hover::after { transform: scaleX(1); }
 
 /* =========================
+   FOOTER — centered social buttons
+   ========================= */
+.footer {
+  background: var(--surface);
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 4rem;
+}
+.footer .social-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;          /* pill */
+  background: var(--accent);     /* gray pill bg */
+  color: var(--text-strong);
+  text-decoration: none;
+  font-family: 'ManufacturingConsent', sans-serif;
+  font-size: 1.1rem;
+  transition: background 0.25s ease;
+}
+.social-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text-strong);
+}
+
+/* =========================
    MOBILE TWEAKS
    ========================= */
 @media (max-width: 768px) {
   body { padding-top: 64px; }
 
+  /* Mobile nav: simple centered bar, no logo, smaller text */
+  .nav { justify-content: center; padding: 0.5rem 1rem; }
+  .nav .logo { display: none; }
+  .nav-links {
+    display: flex !important;
+    position: static;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+  .nav-links a {
+    font-size: 1.05rem;
+    padding: 0.25rem 0.5rem;
+  }
+
   /* About: stack and cap image smaller on phones */
   .about-section {
     flex-direction: column;
     align-items: center;
+    gap: 1.75rem;
     padding: 2rem 1rem;
   }
-  .about-content, .about-image {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-  }
+  .about-content, .about-image { width: 100%; max-width: none; margin: 0; }
   .about-section:nth-of-type(even) .about-content { order: 1; }
   .about-section:nth-of-type(even) .about-image   { order: 2; }
   .about-image {
-    flex: 0 0 320px;   /* smaller mobile image column */
+    flex: 0 0 320px;
     max-width: 320px;
   }
   .about-image img { width: 100%; height: auto; mask-image: none; }
 }
 
-/* =========================
-   FOOTER — center & make buttons consistent
-   ========================= */
-   .footer {
-    background: var(--surface);
-    padding: 2rem 0;
-    text-align: center;
-    margin-top: 4rem;
-  }
-  .footer .social-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;               /* centers the row */
-    width: 100%;
-  }
-  .social-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.6rem 1rem;
-    border-radius: 999px;          /* pill */
-    background: var(--accent);     /* gray pill bg */
-    color: var(--text-strong);
-    text-decoration: none;
-    font-family: 'ManufacturingConsent', sans-serif;
-    font-size: 1.1rem;
-    transition: background 0.25s ease;
-  }
-  .social-btn:hover {
-    background: var(--hover-bg);   /* red on hover */
-    color: var(--text-strong);
-  }
-  
-  /* =========================
-     ABOUT — align both sections perfectly & keep centered
-     ========================= */
-  @media (min-width: 900px) {
-    .about-section {
-      /* switch to grid so both halves center evenly */
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 3rem;
-      align-items: center;
-      justify-items: center;       /* centers each half within its column */
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
-  
-    /* keep consistent max widths so nothing looks shifted */
-    .about-content { max-width: 560px; width: 100%; }
-    .about-image   { max-width: 420px; width: 100%; overflow: hidden; }
-  
-    /* maintain the alternating order */
-    .about-section:nth-of-type(even) .about-content { grid-column: 2; }
-    .about-section:nth-of-type(even) .about-image   { grid-column: 1; }
-  
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      mask-image: radial-gradient(circle at center, black 80%, transparent 100%);
-    }
-  }
-  
-  /* Mobile layout stays stacked & centered (keeps your current behavior) */
-  @media (max-width: 899px) {
-    .about-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.75rem;
-    }
-    .about-content, .about-image { width: 100%; }
-    .about-image { max-width: 320px; }
-    .about-image img { width: 100%; height: auto; mask-image: none; }
-  }
-  
+/* Smaller phones */
+@media (max-width: 420px) {
+  .nav { padding: 0.45rem 0.75rem; }
+  .nav-links { gap: 0.5rem; }
+  .nav-links a { font-size: 0.95rem; }
+}
